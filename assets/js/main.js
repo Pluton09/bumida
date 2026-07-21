@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Active Nav Link Highlight ---
-  const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll('section[id], #kontak');
   const navLinks = document.querySelectorAll('.nav-link');
 
   const highlightNav = () => {
