@@ -1,0 +1,533 @@
+/* ============================================================
+   ASURANSI BUMIDA CABANG BANDUNG — Custom Stylesheet
+   ============================================================
+   Digunakan bersama Tailwind CSS v3 (CDN).
+   File ini berisi: CSS variables, placeholder styling,
+   animasi scroll, floating WhatsApp, dan utilitas.
+   Palet warna: Merah Bumida, Orange, Putih.
+   ============================================================ */
+
+/* --- CSS Custom Properties (Design Tokens) --- */
+:root {
+  --bumida-red: #E31E24;
+  --bumida-red-dark: #B8171C;
+  --bumida-red-light: #FF4D52;
+  --bumida-orange: #F37021;
+  --bumida-orange-light: #FF8C42;
+  --bumida-orange-pale: #FFF3EB;
+  --bumida-white: #FFFFFF;
+  --bumida-off-white: #FFFAF7;
+  --bumida-dark: #1F2937;
+  --bumida-gray: #4B5563;
+  --bumida-gray-light: #9CA3AF;
+  --bumida-border: #F3E8E2;
+
+  --bg-primary: var(--bumida-white);
+  --bg-secondary: var(--bumida-off-white);
+  --bg-card: var(--bumida-white);
+  --text-primary: var(--bumida-dark);
+  --text-secondary: var(--bumida-gray);
+  --border-color: var(--bumida-border);
+}
+
+/* --- Global Resets & Base --- */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Skip to Content (Aksesibilitas) --- */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bumida-red);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* --- Focus Visible (Aksesibilitas Keyboard) --- */
+*:focus-visible {
+  outline: 3px solid var(--bumida-orange);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- Placeholder Image Styling --- */
+.placeholder-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FCE8DB;
+  border: 2px dashed #F3A876;
+  color: #C27540;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* --- Navbar --- */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.nav-link {
+  position: relative;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 8px 4px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--bumida-red);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--bumida-red), var(--bumida-orange));
+  border-radius: 1px;
+}
+
+/* --- Hamburger Menu --- */
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.mobile-menu.open {
+  max-height: 400px;
+  opacity: 1;
+}
+
+/* --- Hero Section --- */
+.hero-gradient {
+  background: linear-gradient(135deg, #E31E24 0%, #C41A1F 40%, #F37021 100%);
+}
+
+.hero-pattern {
+  position: relative;
+}
+
+.hero-pattern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* --- Section Styling --- */
+.section-bg-alt {
+  background-color: var(--bg-secondary);
+}
+
+/* --- Card Styling --- */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(227, 30, 36, 0.08);
+  border-color: var(--bumida-orange);
+}
+
+/* Keunggulan Card (Profil section) */
+.keunggulan-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.keunggulan-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(243, 112, 33, 0.1);
+}
+
+.keunggulan-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #FEE2E2, var(--bumida-orange-pale));
+  color: var(--bumida-red);
+  margin-bottom: 16px;
+}
+
+/* --- Produk Card --- */
+.produk-card {
+  overflow: hidden;
+}
+
+.produk-card .placeholder-img {
+  height: 180px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px dashed #F3A876;
+}
+
+/* --- Produk Badge --- */
+.produk-badge {
+  background: linear-gradient(135deg, #FEE2E2, var(--bumida-orange-pale));
+  color: var(--bumida-red);
+}
+
+/* --- Video Embed --- */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* --- Google Maps Embed --- */
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 350px;
+  border: 0;
+}
+
+/* --- Kontak Info Card --- */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.contact-card:hover {
+  border-color: var(--bumida-orange);
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FEE2E2, var(--bumida-orange-pale));
+  color: var(--bumida-red);
+}
+
+.contact-icon-wa {
+  background: linear-gradient(135deg, #dcfce7, #d1fae5) !important;
+  color: #25D366 !important;
+}
+
+/* --- Floating WhatsApp Button --- */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #25D366;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: wa-pulse 3s ease-in-out infinite;
+}
+
+.wa-float:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+}
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.6); }
+}
+
+/* Mobile: icon only */
+@media (max-width: 639px) {
+  .wa-float {
+    padding: 16px;
+    border-radius: 50%;
+  }
+  .wa-float .wa-label {
+    display: none;
+  }
+}
+
+/* --- Scroll Fade-In Animation --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children animation */
+.fade-in-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-children.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.fade-in-children.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.fade-in-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.fade-in-children.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.fade-in-children.visible > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+.fade-in-children.visible > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+/* --- CTA Button --- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--bumida-red), var(--bumida-red-dark));
+  color: white;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  min-height: 48px;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--bumida-red);
+  border: 2px solid var(--bumida-red);
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  min-height: 48px;
+}
+
+.btn-outline:hover {
+  background-color: var(--bumida-red);
+  color: white;
+}
+
+.btn-outline:active {
+  transform: scale(0.98);
+}
+
+/* Orange outline variant */
+.btn-outline-orange {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--bumida-orange);
+  border: 2px solid var(--bumida-orange);
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  min-height: 48px;
+}
+
+.btn-outline-orange:hover {
+  background-color: var(--bumida-orange);
+  color: white;
+}
+
+/* White variant for dark backgrounds */
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  color: var(--bumida-red);
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  min-height: 48px;
+}
+
+.btn-white:hover {
+  background-color: #FFF3EB;
+}
+
+.btn-white:active {
+  transform: scale(0.98);
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--bumida-dark);
+  color: #D1D5DB;
+}
+
+.footer a {
+  color: #D1D5DB;
+  transition: color 0.2s ease;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #D1D5DB;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.footer-social-link:hover {
+  background: linear-gradient(135deg, var(--bumida-red), var(--bumida-orange));
+  color: white;
+}
+
+/* --- Section Divider --- */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bumida-red), var(--bumida-orange));
+  border-radius: 2px;
+  margin-top: 16px;
+}
+
+.section-heading-center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Accent Label --- */
+.accent-label {
+  color: var(--bumida-orange);
+}
+
+/* --- Utilities --- */
+.text-bumida-red { color: var(--bumida-red); }
+.text-bumida-orange { color: var(--bumida-orange); }
+.bg-bumida-red { background-color: var(--bumida-red); }
+.bg-bumida-orange { background-color: var(--bumida-orange); }
