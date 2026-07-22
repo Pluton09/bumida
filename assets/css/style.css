@@ -117,7 +117,7 @@ body {
   color: var(--bumida-red);
 }
 
-.nav-link.active::after {
+.nav-link::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -126,6 +126,14 @@ body {
   height: 2px;
   background: linear-gradient(90deg, var(--bumida-red), var(--bumida-orange));
   border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
 }
 
 /* --- Hamburger Menu --- */
@@ -170,6 +178,7 @@ body {
 
 .hero-pattern {
   position: relative;
+  overflow: hidden;
 }
 
 .hero-pattern::after {
@@ -178,6 +187,33 @@ body {
   inset: 0;
   background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
                      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Hero Background Photo Placeholder */
+.hero-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8D5C8;
+  border: none;
+  color: #A07050;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+
+/* Hero Gradient Overlay — over photo, under content */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(227,30,36,0.85), rgba(196,26,31,0.75), rgba(243,112,33,0.65));
   pointer-events: none;
 }
 
