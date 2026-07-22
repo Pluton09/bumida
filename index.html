@@ -20,8 +20,8 @@
   <meta property="og:image" content="https://bumida-bandung.co.id/assets/img/og-image.jpg">
   <meta property="og:locale" content="id_ID">
 
-  <!-- EDIT DI SINI: Ganti favicon dengan file favicon asli -->
-  <!-- <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon"> -->
+  <!-- EDIT DI SINI: pastikan file favicon.png sudah ada di assets/img/ -->
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
 
   <!-- Structured Data JSON-LD (SEO Lokal) -->
   <!-- EDIT DI SINI: Lengkapi data alamat, telepon, dan URL -->
@@ -115,10 +115,8 @@
 
         <!-- Logo -->
         <a href="#beranda" class="flex items-center gap-3 shrink-0">
-          <!-- EDIT DI SINI: Ganti div placeholder ini dengan <img src="assets/img/logo.png" alt="Logo Asuransi Bumida Cabang Bandung" class="h-10"> -->
-          <div class="placeholder-img rounded-lg" role="img" aria-label="Logo Asuransi Bumida Cabang Bandung" style="width:44px;height:44px;font-size:9px;">
-            LOGO
-          </div>
+          <!-- EDIT DI SINI: pastikan file logo-bumida.png sudah ada di assets/img/ -->
+          <img src="assets/img/logo-bumida.png" alt="Logo Bumida Cabang Bandung" class="h-10 w-auto object-contain">
           <div class="flex flex-col leading-tight">
             <span class="font-bold text-lg" style="color:var(--text-primary)">Bumida</span>
             <span class="text-xs font-medium" style="color:var(--text-secondary)">Cabang Bandung</span>
@@ -130,6 +128,7 @@
           <a href="#beranda" class="nav-link active">Beranda</a>
           <a href="#profil" class="nav-link">Profil</a>
           <a href="#produk" class="nav-link">Produk</a>
+          <a href="#e-brosur" class="nav-link">E-Brosur</a>
           <a href="#video" class="nav-link">Video</a>
           <a href="#lokasi" class="nav-link">Lokasi</a>
           <a href="#kontak" class="nav-link">Kontak</a>
@@ -152,6 +151,7 @@
           <a href="#beranda" class="nav-link block py-3 px-4 rounded-lg text-lg">Beranda</a>
           <a href="#profil" class="nav-link block py-3 px-4 rounded-lg text-lg">Profil</a>
           <a href="#produk" class="nav-link block py-3 px-4 rounded-lg text-lg">Produk</a>
+          <a href="#e-brosur" class="nav-link block py-3 px-4 rounded-lg text-lg">E-Brosur</a>
           <a href="#video" class="nav-link block py-3 px-4 rounded-lg text-lg">Video</a>
           <a href="#lokasi" class="nav-link block py-3 px-4 rounded-lg text-lg">Lokasi</a>
           <a href="#kontak" class="nav-link block py-3 px-4 rounded-lg text-lg">Kontak</a>
@@ -318,60 +318,78 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in-children">
 
-          <!-- Produk Card: Motorkoe -->
+          <!-- Produk Card: MotorKoe -->
           <div class="card produk-card overflow-hidden flex flex-col">
             <!-- EDIT DI SINI: Ganti placeholder dengan gambar produk -->
-            <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi Motorkoe">
+            <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi MotorKoe">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Zm16.5-13.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
               Foto produk akan ditambahkan
             </div>
             <div class="p-6 flex flex-col flex-1">
               <div class="produk-badge text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-3">Kendaraan</div>
-              <!-- EDIT DI SINI: Ganti nama & deskripsi produk -->
-              <h3 class="font-bold text-xl mb-2" style="color:var(--text-primary)">Motorkoe</h3>
-              <p class="mb-6 flex-1" style="color:var(--text-secondary)">Perlindungan menyeluruh untuk sepeda motor Anda dari risiko kecelakaan, kehilangan, dan kerusakan.</p>
-              <!-- EDIT DI SINI: Ganti nomor WhatsApp -->
-              <a href="https://wa.me/62812XXXXXXXX?text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20produk%20Motorkoe." class="btn-outline text-center w-full justify-center" target="_blank" rel="noopener noreferrer">
-                Info Lanjut
-              </a>
+              <h3 class="font-bold text-xl mb-1" style="color:var(--text-primary)">MotorKoe</h3>
+              <p class="text-sm font-medium mb-3" style="color:var(--bumida-orange)">Bebas Biaya Administrasi &amp; Polis</p>
+              <ul class="text-sm mb-4 space-y-1" style="color:var(--text-secondary)">
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Tanggung jawab hukum pihak ketiga</li>
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Santunan meninggal dunia bagi pengemudi &amp; penumpang</li>
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Santunan biaya pengobatan akibat kecelakaan</li>
+              </ul>
+              <p class="text-sm font-semibold mb-1" style="color:var(--text-primary)">Mulai dari Rp227.000/tahun<span class="text-xs font-normal" style="color:var(--text-secondary)">*</span></p>
+              <p class="text-xs mb-5" style="color:var(--bumida-gray-light)">*estimasi, syarat &amp; ketentuan berlaku</p>
+              <div class="flex gap-2 mt-auto">
+                <a href="#kalkulator-premi" class="btn-outline text-center flex-1 justify-center text-sm" style="padding:10px 12px;">Hitung Premi</a>
+                <a href="#e-sppa" class="btn-primary text-center flex-1 justify-center text-sm" style="padding:10px 12px;">Ajukan Sekarang</a>
+              </div>
             </div>
           </div>
 
-          <!-- Produk Card: Mobilkoe -->
+          <!-- Produk Card: MobilKoe -->
           <div class="card produk-card overflow-hidden flex flex-col">
             <!-- EDIT DI SINI: Ganti placeholder dengan gambar produk -->
-            <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi Mobilkoe">
+            <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi MobilKoe">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Zm16.5-13.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
               Foto produk akan ditambahkan
             </div>
             <div class="p-6 flex flex-col flex-1">
               <div class="produk-badge text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-3">Kendaraan</div>
-              <!-- EDIT DI SINI: Ganti nama & deskripsi produk -->
-              <h3 class="font-bold text-xl mb-2" style="color:var(--text-primary)">Mobilkoe</h3>
-              <p class="mb-6 flex-1" style="color:var(--text-secondary)">Asuransi komprehensif maupun TLO untuk mobil Anda. Meliputi perlindungan dari kecelakaan, bencana, dan pencurian.</p>
-              <!-- EDIT DI SINI: Ganti nomor WhatsApp -->
-              <a href="https://wa.me/62812XXXXXXXX?text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20produk%20Mobilkoe." class="btn-outline text-center w-full justify-center" target="_blank" rel="noopener noreferrer">
-                Info Lanjut
-              </a>
+              <h3 class="font-bold text-xl mb-1" style="color:var(--text-primary)">MobilKoe</h3>
+              <p class="text-sm font-medium mb-3" style="color:var(--bumida-orange)">Perlindungan All Risk untuk Mobil Anda</p>
+              <ul class="text-sm mb-4 space-y-1" style="color:var(--text-secondary)">
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Jaminan All Risk (Comprehensive)</li>
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Termasuk biaya derek akibat kecelakaan</li>
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Bengkel rekanan pilihan/Authorized</li>
+              </ul>
+              <p class="text-sm font-semibold mb-1" style="color:var(--text-primary)">Premi bervariasi sesuai nilai kendaraan</p>
+              <p class="text-xs mb-5" style="color:var(--bumida-gray-light)">Gunakan kalkulator premi untuk estimasi</p>
+              <div class="flex gap-2 mt-auto">
+                <a href="#kalkulator-premi" class="btn-outline text-center flex-1 justify-center text-sm" style="padding:10px 12px;">Hitung Premi</a>
+                <a href="#e-sppa" class="btn-primary text-center flex-1 justify-center text-sm" style="padding:10px 12px;">Ajukan Sekarang</a>
+              </div>
             </div>
           </div>
 
-          <!-- Produk Card: RumahKoe -->
+          <!-- Produk Card: RumahKoe Lux -->
           <div class="card produk-card overflow-hidden flex flex-col">
             <!-- EDIT DI SINI: Ganti placeholder dengan gambar produk -->
-            <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi RumahKoe">
+            <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi RumahKoe Lux">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Zm16.5-13.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
               Foto produk akan ditambahkan
             </div>
             <div class="p-6 flex flex-col flex-1">
               <div class="produk-badge text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-3">Properti</div>
-              <!-- EDIT DI SINI: Ganti nama & deskripsi produk -->
-              <h3 class="font-bold text-xl mb-2" style="color:var(--text-primary)">RumahKoe</h3>
-              <p class="mb-6 flex-1" style="color:var(--text-secondary)">Lindungi rumah dan harta benda Anda dari risiko kebakaran, banjir, gempa bumi, dan bencana alam lainnya.</p>
-              <!-- EDIT DI SINI: Ganti nomor WhatsApp -->
-              <a href="https://wa.me/62812XXXXXXXX?text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20produk%20RumahKoe." class="btn-outline text-center w-full justify-center" target="_blank" rel="noopener noreferrer">
-                Info Lanjut
-              </a>
+              <h3 class="font-bold text-xl mb-1" style="color:var(--text-primary)">RumahKoe Lux</h3>
+              <p class="text-sm font-medium mb-3" style="color:var(--bumida-orange)">Lindungi Rumah Impian Anda</p>
+              <ul class="text-sm mb-4 space-y-1" style="color:var(--text-secondary)">
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Jaminan kebakaran &amp; bencana alam</li>
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Tanggung jawab hukum pihak ketiga</li>
+                <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Santunan sewa jika rumah tidak dapat dihuni</li>
+              </ul>
+              <p class="text-sm font-semibold mb-1" style="color:var(--text-primary)">Mulai dari Rp6.640.000/tahun<span class="text-xs font-normal" style="color:var(--text-secondary)">*</span></p>
+              <p class="text-xs mb-5" style="color:var(--bumida-gray-light)">*estimasi, syarat &amp; ketentuan berlaku</p>
+              <div class="flex gap-2 mt-auto">
+                <a href="#kalkulator-premi" class="btn-outline text-center flex-1 justify-center text-sm" style="padding:10px 12px;">Hitung Premi</a>
+                <a href="#e-sppa" class="btn-primary text-center flex-1 justify-center text-sm" style="padding:10px 12px;">Ajukan Sekarang</a>
+              </div>
             </div>
           </div>
 
@@ -392,6 +410,75 @@
                 Info Lanjut
               </a>
             </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         E-BROSUR
+         ============================================================ -->
+    <section id="e-brosur" class="py-20 lg:py-28" style="background-color:var(--bg-primary)">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16 fade-in">
+          <p class="accent-label font-semibold text-sm uppercase tracking-wider mb-3">E-Brosur</p>
+          <h2 class="section-heading section-heading-center text-3xl sm:text-4xl font-bold" style="color:var(--text-primary)">
+            Unduh Brosur Produk
+          </h2>
+          <p class="mt-6 text-lg max-w-2xl mx-auto" style="color:var(--text-secondary)">
+            Unduh informasi lengkap produk asuransi kami dalam format PDF.
+          </p>
+        </div>
+
+        <!-- EDIT DI SINI: Pastikan file PDF sudah diupload ke folder assets/brosur/ dengan nama file yang sesuai -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 fade-in-children">
+
+          <!-- Brosur Card: MotorKoe -->
+          <div class="card brosur-card flex items-center gap-4 p-5">
+            <div class="brosur-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-base" style="color:var(--text-primary)">MotorKoe</h3>
+              <p class="text-xs" style="color:var(--text-secondary)">Brosur produk (PDF)</p>
+            </div>
+            <a href="assets/brosur/motorkoe.pdf" download class="btn-outline text-sm" style="padding:8px 16px;" aria-label="Unduh brosur MotorKoe (PDF)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              Unduh
+            </a>
+          </div>
+
+          <!-- Brosur Card: MobilKoe -->
+          <div class="card brosur-card flex items-center gap-4 p-5">
+            <div class="brosur-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-base" style="color:var(--text-primary)">MobilKoe</h3>
+              <p class="text-xs" style="color:var(--text-secondary)">Brosur produk (PDF)</p>
+            </div>
+            <a href="assets/brosur/mobilkoe.pdf" download class="btn-outline text-sm" style="padding:8px 16px;" aria-label="Unduh brosur MobilKoe (PDF)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              Unduh
+            </a>
+          </div>
+
+          <!-- Brosur Card: RumahKoe Lux -->
+          <div class="card brosur-card flex items-center gap-4 p-5">
+            <div class="brosur-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-base" style="color:var(--text-primary)">RumahKoe Lux</h3>
+              <p class="text-xs" style="color:var(--text-secondary)">Brosur produk (PDF)</p>
+            </div>
+            <a href="assets/brosur/rumahkoe-lux.pdf" download class="btn-outline text-sm" style="padding:8px 16px;" aria-label="Unduh brosur RumahKoe Lux (PDF)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              Unduh
+            </a>
           </div>
 
         </div>
