@@ -78,18 +78,24 @@ body {
 /* --- Placeholder Image Styling --- */
 .placeholder-img {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #FCE8DB;
-  border: 2px dashed #F3A876;
-  color: #C27540;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  gap: 8px;
+  background-color: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  color: #6B7280;
+  font-size: 13px;
+  font-weight: 500;
   text-align: center;
   overflow: hidden;
   user-select: none;
+}
+
+.placeholder-img svg {
+  width: 36px;
+  height: 36px;
+  color: #9CA3AF;
 }
 
 /* --- Navbar --- */
@@ -196,16 +202,22 @@ body {
   inset: 0;
   z-index: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #E8D5C8;
+  gap: 8px;
+  background-color: #E5E7EB;
   border: none;
-  color: #A07050;
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  color: #6B7280;
+  font-size: 14px;
+  font-weight: 500;
   user-select: none;
+}
+
+.hero-photo-placeholder svg {
+  width: 48px;
+  height: 48px;
+  color: #9CA3AF;
 }
 
 /* Hero Gradient Overlay — over photo, under content */
@@ -272,7 +284,7 @@ body {
   height: 180px;
   border-radius: 0;
   border: none;
-  border-bottom: 2px dashed #F3A876;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 /* --- Produk Badge --- */
