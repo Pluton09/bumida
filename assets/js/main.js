@@ -42,31 +42,36 @@ document.addEventListener('DOMContentLoaded', () => {
     handleNavbarScroll();
   }
 
-  // --- Active Nav Link Highlight ---
+  // --- Active Nav Link Highlight (Single Page Scroll on index.html) ---
   const sections = document.querySelectorAll('section[id], #kontak');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  const highlightNav = () => {
-    const scrollPos = window.scrollY + 120;
+  if (sections.length > 0 && !window.location.pathname.endsWith('e-brosur.html') && !window.location.pathname.endsWith('e-sppa.html')) {
+    const highlightNav = () => {
+      const scrollPos = window.scrollY + 120;
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
 
-      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  };
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              link.classList.remove('active');
+              if (href === `#${sectionId}`) {
+                link.classList.add('active');
+              }
+            }
+          });
+        }
+      });
+    };
 
-  window.addEventListener('scroll', highlightNav, { passive: true });
-  highlightNav();
+    window.addEventListener('scroll', highlightNav, { passive: true });
+    highlightNav();
+  }
 
   // --- Smooth Scroll for Anchor Links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
