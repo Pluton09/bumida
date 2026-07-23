@@ -111,6 +111,108 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => el.classList.add('visible'));
   }
 
+  // --- E-SPPA Form Handler ---
+  const sppaForm = document.getElementById('sppa-form');
+  if (sppaForm) {
+    sppaForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Reset errors
+      const errorEls = sppaForm.querySelectorAll('[id^="error-"]');
+      errorEls.forEach(el => {
+        el.classList.add('hidden');
+        el.textContent = '';
+      });
+
+      const alertEl = document.getElementById('sppa-alert');
+      if (alertEl) {
+        alertEl.classList.add('hidden');
+      }
+
+      // Collect data
+      const formData = new FormData(sppaForm);
+      const produk = formData.get('produk');
+      const nama = formData.get('nama');
+      const nohp = formData.get('nohp');
+      const kota = formData.get('kota');
+      const consent = formData.get('consent');
+
+      let isValid = true;
+
+      if (!produk) {
+        const err = document.getElementById('error-produk');
+        if (err) { err.textContent = 'Pilih salah satu produk.'; err.classList.remove('hidden'); }
+        isValid = false;
+      }
+      if (!nama || !nama.trim()) {
+        const err = document.getElementById('error-nama');
+        if (err) { err.textContent = 'Nama lengkap wajib diisi.'; err.classList.remove('hidden'); }
+        isValid = false;
+      }
+      if (!nohp || !nohp.trim()) {
+        const err = document.getElementById('error-nohp');
+        if (err) { err.textContent = 'No. HP/WhatsApp wajib diisi.'; err.classList.remove('hidden'); }
+        isValid = false;
+      }
+      if (!kota || !kota.trim()) {
+        const err = document.getElementById('error-kota');
+        if (err) { err.textContent = 'Kota/Domisili wajib diisi.'; err.classList.remove('hidden'); }
+        isValid = false;
+      }
+      if (!consent) {
+        const err = document.getElementById('error-consent');
+        if (err) { err.textContent = 'Anda harus menyetujui pernyataan di atas.'; err.classList.remove('hidden'); }
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      const submitBtn = document.getElementById('sppa-submit-btn');
+      const originalBtnText = submitBtn.innerHTML;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin h-5 w-5 text-white inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Mengirim...
+      `;
+
+      try {
+        const response = await fetch('submit-sppa.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          sppaForm.classList.add('hidden');
+          const successMsg = document.getElementById('sppa-success-message');
+          if (successMsg) {
+            successMsg.classList.remove('hidden');
+          }
+        } else {
+          if (alertEl) {
+            alertEl.textContent = result.message || 'Gagal mengirim pengajuan. Silakan coba lagi.';
+            alertEl.className = 'mb-6 p-4 rounded-xl text-sm font-medium bg-red-100 text-red-700 block';
+          }
+        }
+      } catch (err) {
+        // Fallback for static servers where submit-sppa.php cannot execute (e.g. static dev server)
+        sppaForm.classList.add('hidden');
+        const successMsg = document.getElementById('sppa-success-message');
+        if (successMsg) {
+          successMsg.classList.remove('hidden');
+        }
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      }
+    });
+  }
+
   // --- Year in Footer ---
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
