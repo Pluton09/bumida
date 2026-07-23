@@ -111,6 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => el.classList.add('visible'));
   }
 
+  // --- E-SPPA: Format Rupiah on "Estimasi Nilai Pertanggungan" ---
+  const nilaiInput = document.getElementById('sppa-nilai');
+  if (nilaiInput) {
+    nilaiInput.addEventListener('input', () => {
+      let raw = nilaiInput.value.replace(/\D/g, ''); // strip non-digits
+      if (raw) {
+        nilaiInput.value = 'Rp' + Number(raw).toLocaleString('id-ID');
+      } else {
+        nilaiInput.value = '';
+      }
+    });
+  }
+
   // --- E-SPPA Form Handler ---
   const sppaForm = document.getElementById('sppa-form');
   if (sppaForm) {
@@ -178,6 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>
         Mengirim...
       `;
+
+      // Strip Rupiah formatting from nilai_pertanggungan before sending
+      if (nilaiInput) {
+        formData.set('nilai_pertanggungan', nilaiInput.value.replace(/\D/g, ''));
+      }
 
       try {
         const response = await fetch('submit-sppa.php', {
