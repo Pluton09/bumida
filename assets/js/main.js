@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('section[id], #kontak');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  if (sections.length > 0 && !window.location.pathname.endsWith('e-brosur.html') && !window.location.pathname.endsWith('e-sppa.html')) {
+  if (sections.length > 0 && !window.location.pathname.endsWith('e-brosur.html') && !window.location.pathname.endsWith('e-sppa.html') && !window.location.pathname.endsWith('produk.html')) {
     const highlightNav = () => {
       const scrollPos = window.scrollY + 120;
 
