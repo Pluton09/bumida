@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => el.classList.add('visible'));
   }
 
-  // --- E-SPPA: Format Rupiah on "Estimasi Nilai Pertanggungan" ---
+  // --- E-SPPA: Format Rupiah on "Estimasi Nilai Pertanggungan" & "Premi" ---
   const nilaiInput = document.getElementById('sppa-nilai');
   if (nilaiInput) {
     nilaiInput.addEventListener('input', () => {
@@ -125,6 +125,18 @@ document.addEventListener('DOMContentLoaded', () => {
         nilaiInput.value = 'Rp' + Number(raw).toLocaleString('id-ID');
       } else {
         nilaiInput.value = '';
+      }
+    });
+  }
+
+  const premiInput = document.getElementById('sppa-premi');
+  if (premiInput) {
+    premiInput.addEventListener('input', () => {
+      let raw = premiInput.value.replace(/\D/g, ''); // strip non-digits
+      if (raw) {
+        premiInput.value = 'Rp' + Number(raw).toLocaleString('id-ID');
+      } else {
+        premiInput.value = '';
       }
     });
   }
@@ -149,7 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Collect data
       const formData = new FormData(sppaForm);
-      const produk = formData.get('produk');
+      const produkSelect = document.getElementById('sppa-produk');
+      const produk = produkSelect ? produkSelect.value : (formData.get('produk') || '');
       const nama = formData.get('nama');
       const nohp = formData.get('nohp');
       const kota = formData.get('kota');
@@ -157,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let isValid = true;
 
-      if (!produk) {
+      if (!produk || !produk.trim()) {
         const err = document.getElementById('error-produk');
         if (err) { err.textContent = 'Pilih salah satu produk.'; err.classList.remove('hidden'); }
         isValid = false;
@@ -183,6 +196,53 @@ document.addEventListener('DOMContentLoaded', () => {
         isValid = false;
       }
 
+      // Validasi Dokumen Pendukung
+      const dokumenInput = document.getElementById('sppa-dokumen');
+      if (dokumenInput && dokumenInput.files && dokumenInput.files.length > 0) {
+        const files = Array.from(dokumenInput.files);
+        const maxFiles = 5;
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        const allowedExts = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png', 'webp'];
+
+        if (files.length > maxFiles) {
+          const err = document.getElementById('error-dokumen');
+          if (err) {
+            err.textContent = `Maksimal 5 file yang dapat diunggah (Anda memilih ${files.length} file).`;
+            err.classList.remove('hidden');
+          }
+          isValid = false;
+        } else {
+          const invalidSizeFiles = [];
+          const invalidExtFiles = [];
+
+          files.forEach(file => {
+            if (file.size > maxSize) {
+              invalidSizeFiles.push(file.name);
+            }
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (!allowedExts.includes(ext)) {
+              invalidExtFiles.push(file.name);
+            }
+          });
+
+          if (invalidSizeFiles.length > 0 || invalidExtFiles.length > 0) {
+            const errorMessages = [];
+            if (invalidSizeFiles.length > 0) {
+              errorMessages.push(`File melebihi batas 5MB: ${invalidSizeFiles.join(', ')}`);
+            }
+            if (invalidExtFiles.length > 0) {
+              errorMessages.push(`Format file tidak didukung: ${invalidExtFiles.join(', ')}`);
+            }
+            const err = document.getElementById('error-dokumen');
+            if (err) {
+              err.textContent = errorMessages.join(' | ');
+              err.classList.remove('hidden');
+            }
+            isValid = false;
+          }
+        }
+      }
+
       if (!isValid) return;
 
       const submitBtn = document.getElementById('sppa-submit-btn');
@@ -197,9 +257,12 @@ document.addEventListener('DOMContentLoaded', () => {
         Mengirim...
       `;
 
-      // Strip Rupiah formatting from nilai_pertanggungan before sending
+      // Strip Rupiah formatting from nilai_pertanggungan & premi before sending
       if (nilaiInput) {
         formData.set('nilai_pertanggungan', nilaiInput.value.replace(/\D/g, ''));
+      }
+      if (premiInput) {
+        formData.set('premi', premiInput.value.replace(/\D/g, ''));
       }
 
       try {

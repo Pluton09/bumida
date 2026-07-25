@@ -190,23 +190,20 @@
 
           <!-- Pilih Produk -->
           <div>
-            <label class="block text-sm font-semibold mb-2" style="color:var(--text-primary)">
+            <label for="sppa-produk" class="block text-sm font-semibold mb-2" style="color:var(--text-primary)">
               Pilih Produk Asuransi <span class="text-red-500">*</span>
             </label>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label class="flex items-center gap-3 p-4 border rounded-2xl cursor-pointer hover:border-orange-400 transition-all bg-white hover:bg-orange-50/40">
-                <input type="radio" name="produk" value="MotorKoe" class="w-4 h-4 text-red-600 focus:ring-red-500">
-                <span class="text-sm font-semibold" style="color:var(--text-primary)">MotorKoe</span>
-              </label>
-              <label class="flex items-center gap-3 p-4 border rounded-2xl cursor-pointer hover:border-orange-400 transition-all bg-white hover:bg-orange-50/40">
-                <input type="radio" name="produk" value="MobilKoe" class="w-4 h-4 text-red-600 focus:ring-red-500">
-                <span class="text-sm font-semibold" style="color:var(--text-primary)">MobilKoe</span>
-              </label>
-              <label class="flex items-center gap-3 p-4 border rounded-2xl cursor-pointer hover:border-orange-400 transition-all bg-white hover:bg-orange-50/40">
-                <input type="radio" name="produk" value="RumahKoe Lux" class="w-4 h-4 text-red-600 focus:ring-red-500">
-                <span class="text-sm font-semibold" style="color:var(--text-primary)">RumahKoe Lux</span>
-              </label>
-            </div>
+            <select id="sppa-produk" name="produk" required class="w-full px-4 py-3.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 bg-white">
+              <option value="" disabled selected>-- Pilih Produk Asuransi --</option>
+              <optgroup label="Kendaraan">
+                <option value="MotorKoe">MotorKoe</option>
+                <option value="MobilKoe">MobilKoe</option>
+              </optgroup>
+              <optgroup label="Properti">
+                <option value="RumahKoe Lux">RumahKoe Lux</option>
+              </optgroup>
+              <!-- EDIT DI SINI: Tambahkan optgroup & option baru di sini seiring bertambahnya produk dari client (misal "Kesehatan", "Bisnis", dst) -->
+            </select>
             <p id="error-produk" class="text-xs text-red-600 mt-1 hidden"></p>
           </div>
 
@@ -249,15 +246,15 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <!-- Pekerjaan (Opsional) -->
-            <div>
-              <label for="sppa-pekerjaan" class="block text-sm font-semibold mb-2" style="color:var(--text-primary)">
-                Pekerjaan <span class="text-xs font-normal text-gray-500">(Opsional)</span>
-              </label>
-              <input type="text" id="sppa-pekerjaan" name="pekerjaan" class="w-full px-4 py-3.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 bg-white" placeholder="Pekerjaan Anda">
-            </div>
+          <!-- Pekerjaan (Opsional) -->
+          <div>
+            <label for="sppa-pekerjaan" class="block text-sm font-semibold mb-2" style="color:var(--text-primary)">
+              Pekerjaan <span class="text-xs font-normal text-gray-500">(Opsional)</span>
+            </label>
+            <input type="text" id="sppa-pekerjaan" name="pekerjaan" class="w-full px-4 py-3.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 bg-white" placeholder="Pekerjaan Anda">
+          </div>
 
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Estimasi Nilai Pertanggungan (Opsional) -->
             <div>
               <label for="sppa-nilai" class="block text-sm font-semibold mb-1" style="color:var(--text-primary)">
@@ -266,6 +263,32 @@
               <input type="text" id="sppa-nilai" name="nilai_pertanggungan" class="w-full px-4 py-3.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 bg-white" placeholder="Rp50.000.000">
               <p class="text-xs mt-1" style="color:var(--bumida-gray-light)">Perkiraan saja, akan dikonfirmasi ulang oleh tim kami</p>
             </div>
+
+            <!-- Premi (Opsional) -->
+            <div>
+              <label for="sppa-premi" class="block text-sm font-semibold mb-1" style="color:var(--text-primary)">
+                Premi <span class="text-xs font-normal text-gray-500">(Opsional)</span>
+              </label>
+              <input type="text" id="sppa-premi" name="premi" class="w-full px-4 py-3 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 bg-white" placeholder="Rp500.000">
+              <p class="text-xs mt-1" style="color:var(--bumida-gray-light)">Isi jika sudah ada penawaran premi dari tim kami, atau kosongkan jika belum tahu</p>
+            </div>
+          </div>
+
+          <!-- Upload Dokumen Pendukung (Opsional) -->
+          <div>
+            <label for="sppa-dokumen" class="block text-sm font-semibold mb-2" style="color:var(--text-primary)">
+              Upload Dokumen Pendukung <span class="text-xs font-normal text-gray-500">(Opsional — KTP, foto kendaraan/rumah, dokumen lain)</span>
+            </label>
+            <input
+              type="file"
+              id="sppa-dokumen"
+              name="dokumen[]"
+              multiple
+              accept=".pdf,.doc,.docx,.xls,.xlsx,image/jpeg,image/png,image/webp"
+              class="w-full px-4 py-3 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 bg-white"
+            >
+            <p class="text-xs mt-1" style="color:var(--bumida-gray-light)">Format: PDF, Word, Excel, atau foto (JPG/PNG). Maks. 5MB per file, maksimal 5 file. Dokumen Anda akan disimpan dengan aman dan hanya digunakan untuk keperluan pengajuan ini.</p>
+            <p id="error-dokumen" class="text-xs text-red-600 mt-1 hidden"></p>
           </div>
 
           <!-- Catatan Tambahan (Opsional) -->
