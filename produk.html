@@ -4,59 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produk Asuransi - PT Asuransi Umum Bumida 1967 Cabang Bandung</title>
-  <meta name="description" content="Katalog produk asuransi PT Asuransi Umum Bumida 1967 Cabang Bandung. Produk MotorKoe, MobilKoe, RumahKoe Lux, Asuransi Korporasi, dan perlindungan aset lainnya.">
+  <meta name="description" content="Katalog lengkap produk asuransi PT Asuransi Umum Bumida 1967 Cabang Bandung: MotorKoe, MobilKoe, RumahKoe, SehatKoe, SiagaKoe, Surety Bond, dan banyak lagi.">
 
   <!-- Open Graph / Meta Sosial -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Produk Asuransi - Asuransi Bumida Cabang Bandung">
-  <meta property="og:description" content="Pilihan produk asuransi lengkap Bumida Cabang Bandung untuk perlindungan kendaraan, properti, diri, dan bisnis.">
+  <meta property="og:description" content="Pilihan produk asuransi lengkap Bumida Cabang Bandung untuk perlindungan kendaraan, properti, kesehatan, kecelakaan diri, dan bisnis/korporasi.">
   <meta property="og:locale" content="id_ID">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
-
-  <!-- Structured Data JSON-LD (SEO Lokal) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "InsuranceAgency",
-    "name": "PT Asuransi Umum Bumida 1967 – Cabang Bandung",
-    "description": "Kantor cabang Bandung PT Asuransi Umum Bumida 1967. Menyediakan layanan asuransi kendaraan, properti, dan korporasi.",
-    "url": "https://bumida-bandung.co.id",
-    "telephone": "+62-22-87340295",
-    "email": "bandung@bumida.co.id",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Jl. Supratman No. 28, Cihapit",
-      "addressLocality": "Bandung Wetan, Bandung",
-      "addressRegion": "Jawa Barat",
-      "postalCode": "40272",
-      "addressCountry": "ID"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "-6.9113859",
-      "longitude": "107.633406"
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "17:00"
-      }
-    ],
-    "parentOrganization": {
-      "@type": "Corporation",
-      "name": "PT Asuransi Umum Bumida 1967",
-      "url": "https://bumida.co.id"
-    },
-    "sameAs": [
-      "https://www.instagram.com/bumaborinsurance",
-      "https://www.facebook.com/bumaborinsurance"
-    ]
-  }
-  </script>
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,19 +26,12 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             bumida: {
-              red: '#E31E24',
-              'red-dark': '#C41A1F',
-              orange: '#F37021',
-              'orange-light': '#F9A05E',
-              'orange-pale': '#FFF4EC',
-              dark: '#1F2937',
-              gray: '#6B7280',
-              'gray-light': '#F3F4F6',
+              red: '#E31E24', 'red-dark': '#C41A1F',
+              orange: '#F37021', 'orange-light': '#F9A05E', 'orange-pale': '#FFF4EC',
+              dark: '#1F2937', gray: '#6B7280', 'gray-light': '#F3F4F6'
             }
           }
         }
@@ -91,17 +41,42 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="antialiased min-h-screen flex flex-col" style="background: linear-gradient(180deg, #FFF4EC 0%, #FFFFFF 45%, #FFF7F2 100%); color:var(--text-primary);">
 
-  <!-- ============================================================
-       NAVBAR / HEADER
-       ============================================================ -->
+  <style>
+    .filter-tab {
+      cursor: pointer; padding: 10px 24px; border-radius: 50px;
+      font-size: 14px; font-weight: 600; border: 2px solid transparent;
+      transition: all 0.2s ease; color: var(--text-secondary);
+      background: transparent; border-color: var(--border-color);
+    }
+    .filter-tab:hover { border-color: var(--bumida-orange); color: var(--bumida-orange); }
+    .filter-tab.active {
+      background: linear-gradient(135deg, var(--bumida-red), var(--bumida-orange));
+      color: white; border-color: transparent;
+    }
+    .produk-grid-card { cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+    .produk-grid-card:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(227,30,36,0.10); border-color: var(--bumida-orange); }
+    #produk-detail { animation: fadeInUp 0.35s ease forwards; }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .badge-kendaraan  { background:#FEE2E2; color:#B91C1C; }
+    .badge-properti   { background:#FEF3C7; color:#92400E; }
+    .badge-kesehatan  { background:#D1FAE5; color:#065F46; }
+    .badge-kecelakaan { background:#DBEAFE; color:#1E40AF; }
+    .badge-kelompok   { background:#EDE9FE; color:#5B21B6; }
+    .badge-pendidikan { background:#FCE7F3; color:#9D174D; }
+    .badge-logistik   { background:#E0F2FE; color:#075985; }
+    .badge-uang       { background:#FEF9C3; color:#713F12; }
+    .badge-tggugat    { background:#F3F4F6; color:#374151; }
+    .badge-penjamin   { background:#FFF4EC; color:#C2410C; }
+  </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col" style="background:linear-gradient(180deg,#FFF4EC 0%,#FFFFFF 40%,#FFF7F2 100%); color:var(--text-primary);">
+
+  <!-- NAVBAR -->
   <header id="navbar" class="navbar fixed top-0 left-0 right-0 z-50 scrolled">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 lg:h-20">
-
-        <!-- Logo -->
         <a href="index.html#beranda" class="flex items-center gap-3 shrink-0">
           <img src="assets/img/logo-bumida.png" alt="Logo Bumida Cabang Bandung" class="h-10 w-auto object-contain">
           <div class="flex flex-col leading-tight">
@@ -109,8 +84,6 @@
             <span class="text-xs font-medium" style="color:var(--text-secondary)">Cabang Bandung</span>
           </div>
         </a>
-
-        <!-- Desktop Nav Links -->
         <nav class="hidden lg:flex items-center gap-8" aria-label="Navigasi utama">
           <a href="index.html#beranda" class="nav-link">Beranda</a>
           <a href="index.html#profil" class="nav-link">Profil</a>
@@ -121,18 +94,12 @@
           <a href="index.html#lokasi" class="nav-link">Lokasi</a>
           <a href="index.html#kontak" class="nav-link">Kontak</a>
         </nav>
-
-        <!-- Mobile: Hamburger -->
         <div class="flex lg:hidden items-center">
           <button id="hamburger-btn" class="hamburger flex flex-col items-center justify-center gap-[6px] w-11 h-11 rounded-lg" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
           </button>
         </div>
       </div>
-
-      <!-- Mobile Menu -->
       <nav id="mobile-menu" class="mobile-menu lg:hidden" aria-label="Navigasi mobile">
         <div class="pb-4 pt-2 flex flex-col gap-1 border-t" style="border-color:var(--border-color)">
           <a href="index.html#beranda" class="nav-link block py-3 px-4 rounded-lg text-lg">Beranda</a>
@@ -148,13 +115,12 @@
     </div>
   </header>
 
-  <!-- ============================================================
-       KONTEN PRODUK PERUSAHAAN
-       ============================================================ -->
+  <!-- MAIN CONTENT -->
   <main class="flex-grow pt-28 lg:pt-36 pb-24 min-h-[75vh]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="text-center mb-16 fade-in visible">
+      <!-- Header -->
+      <div class="text-center mb-10 fade-in visible">
         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border" style="background-color:rgba(243,112,33,0.12); border-color:rgba(243,112,33,0.25); color:var(--bumida-red);">
           Produk Asuransi Kami
         </span>
@@ -162,110 +128,70 @@
           Solusi Perlindungan untuk Setiap Kebutuhan
         </h1>
         <p class="mt-6 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style="color:var(--text-secondary)">
-          Pilih produk asuransi yang sesuai dengan kebutuhan Anda. Konsultasi gratis melalui WhatsApp atau ajukan online melalui E-SPPA.
+          Pilih produk asuransi yang sesuai. Klik card untuk melihat detail, unduh brosur, atau ajukan langsung.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in-children visible">
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap gap-3 justify-center mb-10" id="filter-tabs" role="tablist" aria-label="Filter kategori produk">
+        <button class="filter-tab active" data-filter="semua" role="tab" aria-selected="true">Semua</button>
+        <button class="filter-tab" data-filter="Paket Koe" role="tab" aria-selected="false">Paket Koe</button>
+        <button class="filter-tab" data-filter="Produk Non Paket Koe" role="tab" aria-selected="false">Produk Non Paket Koe</button>
+      </div>
 
-        <!-- Produk Card: MotorKoe -->
-        <div class="card produk-card overflow-hidden flex flex-col">
-          <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi MotorKoe">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Zm16.5-13.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
-            Foto produk akan ditambahkan
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="produk-badge text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-3">Kendaraan</div>
-            <h3 class="font-bold text-xl mb-1" style="color:var(--text-primary)">MotorKoe</h3>
-            <p class="text-sm font-medium mb-3" style="color:var(--bumida-orange)">Bebas Biaya Administrasi &amp; Polis</p>
-            <ul class="text-sm mb-4 space-y-1" style="color:var(--text-secondary)">
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Tanggung jawab hukum pihak ketiga</li>
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Santunan meninggal dunia bagi pengemudi &amp; penumpang</li>
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Santunan biaya pengobatan akibat kecelakaan</li>
-            </ul>
-            <p class="text-sm font-semibold mb-1" style="color:var(--text-primary)">Mulai dari Rp227.000/tahun<span class="text-xs font-normal" style="color:var(--text-secondary)">*</span></p>
-            <p class="text-xs mb-5" style="color:var(--bumida-gray-light)">*estimasi, syarat &amp; ketentuan berlaku</p>
-            <div class="mt-auto">
-              <a href="e-sppa.html" class="btn-primary text-center w-full justify-center text-sm" style="padding:10px 12px;">Ajukan Sekarang</a>
+      <!-- Product Grid -->
+      <div id="produk-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      <!-- Product Detail Section -->
+      <div id="produk-detail" class="hidden mt-4">
+        <button id="btn-kembali" class="mb-8 inline-flex items-center gap-2 text-sm font-semibold hover:underline" style="color:var(--bumida-red);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+          Kembali ke Semua Produk
+        </button>
+        <div class="card rounded-3xl overflow-hidden shadow-xl border" style="border-color:var(--border-color); background-color:var(--bg-card);">
+          <div class="lg:flex">
+            <!-- Left -->
+            <div class="lg:w-5/12 p-8 lg:p-12 flex flex-col justify-between" style="background:linear-gradient(160deg,#FFF4EC 0%,#FFFAF7 100%); border-right:1px solid var(--border-color);">
+              <div>
+                <span id="detail-badge" class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4"></span>
+                <h2 id="detail-nama" class="text-2xl sm:text-3xl font-extrabold mb-2" style="color:var(--text-primary)"></h2>
+                <p id="detail-tagline" class="text-base font-medium mb-6" style="color:var(--bumida-orange)"></p>
+                <p id="detail-deskripsi" class="text-sm leading-relaxed mb-6" style="color:var(--text-secondary)"></p>
+                <div class="rounded-2xl p-5 mb-2" style="background:white; border:1px solid var(--border-color);">
+                  <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color:var(--bumida-red)">Estimasi Premi</p>
+                  <p id="detail-premi" class="text-lg font-bold" style="color:var(--text-primary)"></p>
+                  <p id="detail-premi-note" class="text-xs mt-1" style="color:var(--bumida-gray-light)"></p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 mt-8">
+                <a id="detail-btn-sppa" href="e-sppa.html" class="btn-primary justify-center text-center text-sm" style="padding:12px 20px;">Ajukan Sekarang</a>
+                <!-- EDIT DI SINI: pastikan nama file PDF di array produkData sesuai dengan file asli di assets/brosur/ -->
+                <a id="detail-btn-pdf" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline justify-center text-center text-sm" style="padding:10px 20px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                  Unduh Brosur PDF
+                </a>
+                <a href="index.html#kontak" class="inline-flex items-center justify-center gap-2 text-sm font-medium py-3 rounded-xl" style="color:var(--bumida-orange);">Tanya via WhatsApp / Telepon</a>
+              </div>
+            </div>
+            <!-- Right -->
+            <div class="lg:w-7/12 p-8 lg:p-12">
+              <h3 class="text-lg font-bold mb-6" style="color:var(--text-primary)">Manfaat Utama</h3>
+              <ul id="detail-manfaat" class="space-y-4"></ul>
+              <div class="mt-10 p-4 rounded-xl text-xs" style="background:var(--bg-secondary); color:var(--text-secondary);">
+                <strong>Catatan:</strong> Informasi ini bersifat ringkasan. Detail lengkap, syarat, dan ketentuan tercantum dalam Polis Asuransi. Hubungi tim kami untuk penjelasan lebih lanjut dan penawaran yang disesuaikan.
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Produk Card: MobilKoe -->
-        <div class="card produk-card overflow-hidden flex flex-col">
-          <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi MobilKoe">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Zm16.5-13.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
-            Foto produk akan ditambahkan
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="produk-badge text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-3">Kendaraan</div>
-            <h3 class="font-bold text-xl mb-1" style="color:var(--text-primary)">MobilKoe</h3>
-            <p class="text-sm font-medium mb-3" style="color:var(--bumida-orange)">Perlindungan All Risk untuk Mobil Anda</p>
-            <ul class="text-sm mb-4 space-y-1" style="color:var(--text-secondary)">
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Jaminan All Risk (Comprehensive)</li>
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Termasuk biaya derek akibat kecelakaan</li>
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Bengkel rekanan pilihan/Authorized</li>
-            </ul>
-            <p class="text-sm font-semibold mb-1" style="color:var(--text-primary)">Premi bervariasi sesuai nilai kendaraan</p>
-            <p class="text-xs mb-5" style="color:var(--bumida-gray-light)">Hubungi kami untuk info premi sesuai kendaraan Anda</p>
-            <div class="mt-auto">
-              <a href="e-sppa.html" class="btn-primary text-center w-full justify-center text-sm" style="padding:10px 12px;">Ajukan Sekarang</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Produk Card: RumahKoe Lux -->
-        <div class="card produk-card overflow-hidden flex flex-col">
-          <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi RumahKoe Lux">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Zm16.5-13.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
-            Foto produk akan ditambahkan
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="produk-badge text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-3">Properti</div>
-            <h3 class="font-bold text-xl mb-1" style="color:var(--text-primary)">RumahKoe Lux</h3>
-            <p class="text-sm font-medium mb-3" style="color:var(--bumida-orange)">Lindungi Rumah Impian Anda</p>
-            <ul class="text-sm mb-4 space-y-1" style="color:var(--text-secondary)">
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Jaminan kebakaran &amp; bencana alam</li>
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Tanggung jawab hukum pihak ketiga</li>
-              <li class="flex items-start gap-2"><span style="color:var(--bumida-red)">✓</span> Santunan sewa jika rumah tidak dapat dihuni</li>
-            </ul>
-            <p class="text-sm font-semibold mb-1" style="color:var(--text-primary)">Mulai dari Rp6.640.000/tahun<span class="text-xs font-normal" style="color:var(--text-secondary)">*</span></p>
-            <p class="text-xs mb-5" style="color:var(--bumida-gray-light)">*estimasi, syarat &amp; ketentuan berlaku</p>
-            <div class="mt-auto">
-              <a href="e-sppa.html" class="btn-primary text-center w-full justify-center text-sm" style="padding:10px 12px;">Ajukan Sekarang</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Produk Card: Korporasi -->
-        <div class="card produk-card overflow-hidden flex flex-col">
-          <div class="placeholder-img" role="img" aria-label="Gambar produk asuransi Korporasi">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Zm16.5-13.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
-            Foto produk akan ditambahkan
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="produk-badge text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-3">Bisnis</div>
-            <h3 class="font-bold text-xl mb-2" style="color:var(--text-primary)">Asuransi Korporasi</h3>
-            <p class="mb-6 flex-1 text-sm" style="color:var(--text-secondary)">Solusi perlindungan untuk kebutuhan bisnis Anda: surety bond, asuransi pengangkutan, konstruksi, dan lainnya.</p>
-            <a href="https://wa.me/62812XXXXXXXX?text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20produk%20asuransi%20korporasi." class="btn-outline text-center w-full justify-center text-sm" target="_blank" rel="noopener noreferrer">
-              Info Lanjut
-            </a>
-          </div>
-        </div>
-
       </div>
 
     </div>
   </main>
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
+  <!-- FOOTER -->
   <footer class="footer py-16 text-gray-300" style="background-color:var(--bumida-dark)">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-
-        <!-- Footer Col 1: Brand & Info -->
         <div class="md:col-span-2 space-y-4">
           <div class="flex items-center gap-3">
             <img src="assets/img/logo-bumida.png" alt="Logo Bumida Cabang Bandung" class="h-10 w-auto object-contain brightness-200">
@@ -278,8 +204,6 @@
             Jl. Supratman No.28, Cihapit, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40272<br>
             Telp: <a href="tel:+622287340295" class="text-gray-300 hover:text-white transition-colors">(022) 8734-0295</a>
           </p>
-
-          <!-- Social Media Links -->
           <div class="flex gap-3">
             <a href="https://www.instagram.com/bumaborinsurance" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram Bumida">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -292,8 +216,6 @@
             </a>
           </div>
         </div>
-
-        <!-- Footer Col 2: Quick Links -->
         <div>
           <h4 class="font-bold text-white text-lg mb-5">Navigasi</h4>
           <ul class="space-y-3">
@@ -302,53 +224,158 @@
             <li><a href="produk.html" class="hover:text-white transition-colors">Produk</a></li>
             <li><a href="e-brosur.html" class="hover:text-white transition-colors">E-Brosur</a></li>
             <li><a href="e-sppa.html" class="hover:text-white transition-colors">E-SPPA</a></li>
-            <li><a href="index.html#video" class="hover:text-white transition-colors">Video</a></li>
             <li><a href="index.html#lokasi" class="hover:text-white transition-colors">Lokasi &amp; Kontak</a></li>
           </ul>
         </div>
-
-        <!-- Footer Col 3: Produk -->
         <div>
-          <h4 class="font-bold text-white text-lg mb-5">Produk Kami</h4>
+          <h4 class="font-bold text-white text-lg mb-5">Produk Populer</h4>
           <ul class="space-y-3">
-            <li><a href="produk.html" class="hover:text-white transition-colors">Motorkoe</a></li>
-            <li><a href="produk.html" class="hover:text-white transition-colors">Mobilkoe</a></li>
-            <li><a href="produk.html" class="hover:text-white transition-colors">RumahKoe</a></li>
-            <li><a href="produk.html" class="hover:text-white transition-colors">Asuransi Korporasi</a></li>
+            <li><a href="produk.html#motorkoe" class="hover:text-white transition-colors">MotorKoe</a></li>
+            <li><a href="produk.html#mobilkoe" class="hover:text-white transition-colors">MobilKoe</a></li>
+            <li><a href="produk.html#rumahkoe-lux" class="hover:text-white transition-colors">RumahKoe Lux</a></li>
+            <li><a href="produk.html#sehatkoe" class="hover:text-white transition-colors">SehatKoe</a></li>
+            <li><a href="produk.html#surety-bond" class="hover:text-white transition-colors">Surety Bond</a></li>
           </ul>
         </div>
-
       </div>
-
-      <!-- Footer Bottom -->
       <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-gray-400 text-sm text-center md:text-left">
-          &copy; <span id="current-year">2026</span> PT Asuransi Umum Bumida 1967. Hak cipta dilindungi.
-        </p>
-        <p class="text-gray-500 text-sm text-center md:text-right">
-          PT Asuransi Umum Bumida 1967 terdaftar dan diawasi oleh
-          <span class="text-gray-400 font-medium">Otoritas Jasa Keuangan (OJK)</span>.
-        </p>
+        <p class="text-gray-400 text-sm">&copy; <span id="current-year">2026</span> PT Asuransi Umum Bumida 1967. Hak cipta dilindungi.</p>
+        <p class="text-gray-500 text-sm">PT Asuransi Umum Bumida 1967 terdaftar dan diawasi oleh <span class="text-gray-400 font-medium">Otoritas Jasa Keuangan (OJK)</span>.</p>
       </div>
     </div>
   </footer>
 
-  <!-- ============================================================
-       FLOATING WHATSAPP BUTTON
-       ============================================================ -->
-  <a
-    href="https://wa.me/62812XXXXXXXX?text=Halo%20Bumida%20Bandung%2C%20saya%20ingin%20bertanya%20tentang%20produk%20asuransi."
-    class="wa-float"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Hubungi kami via WhatsApp"
-  >
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/62812XXXXXXXX?text=Halo%20Bumida%20Bandung%2C%20saya%20ingin%20bertanya%20tentang%20produk%20asuransi." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Hubungi kami via WhatsApp">
     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     <span class="wa-label">WhatsApp Kami</span>
   </a>
 
-  <!-- Main JavaScript -->
+  <!-- Main JS -->
   <script src="assets/js/main.js"></script>
+
+  <!-- PRODUK DATA & LOGIC -->
+  <script>
+  /*
+   * DATA PRODUK
+   * EDIT DI SINI: sesuaikan field `pdf` dengan nama file asli di assets/brosur/
+   */
+  const produkData = [
+    // PAKET KOE
+    { id:"motorkoe", nama:"MotorKoe", kategori:"Paket Koe", badge:"Kendaraan", tagline:"Bebas Biaya Administrasi & Polis", deskripsi:"Asuransi kendaraan bermotor roda dua yang memberikan perlindungan terhadap risiko kecelakaan, kehilangan, dan tanggung jawab hukum terhadap pihak ketiga.", manfaat:["Tanggung jawab hukum pihak ketiga (TJH) hingga Rp 2.500.000","Santunan meninggal dunia pengemudi Rp 5.000.000 & penumpang Rp 2.500.000","Santunan biaya pengobatan akibat kecelakaan","Jaminan bencana alam (banjir, angin topan)"], premi:"Mulai Rp 227.000/tahun*", premi_note:"*estimasi, syarat & ketentuan berlaku", pdf:"assets/brosur/motorkoe.pdf", sppa:"MotorKoe" },
+    { id:"mobilkoe", nama:"MobilKoe", kategori:"Paket Koe", badge:"Kendaraan", tagline:"Perlindungan All Risk untuk Mobil Anda", deskripsi:"Asuransi kendaraan bermotor roda empat dengan jaminan komprehensif (All Risk) termasuk kerusakan sebagian, kehilangan total, hingga bencana alam.", manfaat:["Jaminan All Risk (Comprehensive) sesuai PSAKBI","Termasuk biaya derek akibat kecelakaan","Bengkel rekanan pilihan atau Authorized","Santunan kecelakaan diri pengemudi & penumpang"], premi:"Premi bervariasi sesuai nilai kendaraan", premi_note:"Hubungi kami untuk info premi sesuai kendaraan Anda", pdf:"assets/brosur/mobilkoe.pdf", sppa:"MobilKoe" },
+    { id:"rumahkoe-idaman-asri", nama:"RumahKoe Idaman & Asri", kategori:"Paket Koe", badge:"Properti", tagline:"Perlindungan Rumah Tinggal Terjangkau", deskripsi:"Asuransi harta benda yang menjamin tertanggung akibat risiko kebakaran, bencana alam, huru-hara, dan kecurian pada rumah tinggal permanen.", manfaat:["Jaminan FLEXAS + perluasan risiko huru-hara dan kerusuhan","Santunan bencana alam (banjir, angin topan, longsor, tsunami)","Santunan meninggal dunia akibat kebakaran (Idaman Rp 20 jt / Asri Rp 40 jt)","Santunan biaya sewa rumah & kecurian akibat pembongkaran"], premi:"Mulai Rp 135.000/tahun*", premi_note:"*paket terkecil (luas 66-80 m²), syarat & ketentuan berlaku", pdf:"assets/brosur/rumahkoe-idaman-asri.pdf", sppa:"RumahKoe Idaman & Asri" },
+    { id:"rumahkoe-lux", nama:"RumahKoe Lux", kategori:"Paket Koe", badge:"Properti", tagline:"Lindungi Rumah Impian Anda", deskripsi:"Asuransi rumah tinggal premium dengan jaminan kebakaran, bencana alam, tanggung jawab hukum pihak ketiga, dan santunan sewa bila rumah tidak dapat dihuni.", manfaat:["Jaminan kebakaran & bencana alam (FLEXAS)","Tanggung jawab hukum pihak ketiga","Santunan sewa jika rumah tidak dapat dihuni","Jaminan kerusuhan, gempa bumi, dan terorisme"], premi:"Mulai Rp 6.640.000/tahun*", premi_note:"*paket terkecil luas 750 m², syarat & ketentuan berlaku", pdf:"assets/brosur/rumahkoe-lux.pdf", sppa:"RumahKoe Lux" },
+    { id:"sehatkoe", nama:"SehatKoe", kategori:"Paket Koe", badge:"Kesehatan", tagline:"Bebas Pilih Klinik/RS di Seluruh Dunia", deskripsi:"Asuransi kesehatan retail yang menjamin biaya rawat inap, rawat jalan, persalinan, dan rawat gigi dengan pilihan paket fleksibel untuk individu dan keluarga.", manfaat:["Rawat inap hingga 180 hari/tahun di RS mana saja","Rawat jalan, rawat gigi, dan manfaat persalinan","Bebas biaya administrasi polis","No Claim Bonus 12,5% jika tidak ada klaim"], premi:"Mulai Rp 150.000/tahun*", premi_note:"*paket S.100 individu, syarat & ketentuan berlaku", pdf:"assets/brosur/sehatkoe.pdf", sppa:"SehatKoe" },
+    { id:"siagakoe", nama:"SiagaKoe", kategori:"Paket Koe", badge:"Kecelakaan Diri", tagline:"Perlindungan 24 Jam di Seluruh Dunia", deskripsi:"Asuransi kecelakaan diri yang menjamin tertanggung selama 24 jam penuh terhadap risiko kecelakaan yang menimpa dirinya dalam periode pertanggungan.", manfaat:["Santunan meninggal & cacat tetap akibat kecelakaan","Santunan biaya pengobatan akibat kecelakaan","Santunan biaya pemakaman, ambulans, dan repatriasi jenazah","No Claim Bonus 10% dari premi renewal"], premi:"Mulai Rp 115.000/tahun*", premi_note:"*paket PS1 individu, syarat & ketentuan berlaku", pdf:"assets/brosur/siagakoe.pdf", sppa:"SiagaKoe" },
+    { id:"karyawankoe", nama:"KaryawanKoe", kategori:"Paket Koe", badge:"Kelompok", tagline:"Perlindungan Kecelakaan untuk Karyawan", deskripsi:"Asuransi kecelakaan diri kolektif untuk karyawan perusahaan, menjamin risiko kecelakaan 24 jam selama periode pertanggungan.", manfaat:["Tunjangan kematian & cacat tetap akibat kecelakaan","Tunjangan Sementara Tidak Mampu Bekerja (STMB)","Biaya pengobatan, prothese, dan pengangkutan","Cocok untuk perlindungan armada karyawan perusahaan"], premi:"Tarif 2,88%/tahun dari total upah karyawan*", premi_note:"*hubungi kami untuk penawaran", pdf:"assets/brosur/karyawankoe.pdf", sppa:"KaryawanKoe" },
+    { id:"mahasiswakoe", nama:"MahasiswaKoe", kategori:"Paket Koe", badge:"Pendidikan", tagline:"Perlindungan Kecelakaan untuk Mahasiswa", deskripsi:"Asuransi kecelakaan diri kolektif untuk mahasiswa, dikelola oleh universitas/institusi pendidikan dengan manfaat rawat inap dan ID card mahasiswa.", manfaat:["Santunan meninggal & cacat tetap akibat kecelakaan","Santunan rawat inap akibat kecelakaan (maks. 14 hari/tahun)","ID card terintegrasi sebagai kartu mahasiswa","Diskon 10% untuk 100+ peserta & No Claim Bonus 10%"], premi:"Mulai Rp 15.000/orang/tahun*", premi_note:"*syarat & ketentuan berlaku", pdf:"assets/brosur/mahasiswakoe.pdf", sppa:"MahasiswaKoe" },
+    { id:"siswakoe", nama:"SiswaKoe", kategori:"Paket Koe", badge:"Pendidikan", tagline:"Perlindungan Kecelakaan untuk Siswa Sekolah", deskripsi:"Asuransi kecelakaan diri kolektif untuk siswa sekolah (SD hingga SMA), dikelola oleh sekolah dengan manfaat kecelakaan dan beasiswa.", manfaat:["Santunan meninggal & cacat tetap akibat kecelakaan","Santunan rawat inap & biaya pemakaman","Beasiswa Rp 1 juta/tahun (paket tertentu untuk SMA)","ID card & diskon 10% untuk sekolah dengan 100+ siswa"], premi:"Mulai Rp 15.000/orang/tahun*", premi_note:"*syarat & ketentuan berlaku", pdf:"assets/brosur/siswakoe.pdf", sppa:"SiswaKoe" },
+    // PRODUK NON PAKET KOE
+    { id:"kebakaran", nama:"Asuransi Kebakaran", kategori:"Produk Non Paket Koe", badge:"Properti", tagline:"Perlindungan Harta Benda dari Risiko Kebakaran", deskripsi:"Program asuransi yang memberikan perlindungan terhadap harta benda dari risiko kebakaran, petir, ledakan, kejatuhan pesawat, dan asap.", manfaat:["Ganti rugi akibat kebakaran termasuk arus pendek","Kerusakan akibat petir dan ledakan","Kerusakan akibat kejatuhan pesawat terbang dan asap","Tersedia perluasan jaminan gempa bumi, banjir, dan kerusuhan"], premi:"Tarif bervariasi sesuai nilai & tipe bangunan*", premi_note:"*contoh: bangunan Rp 5 miliar → premi Rp 7.425.000/tahun", pdf:"assets/brosur/kebakaran.pdf", sppa:"Asuransi Kebakaran" },
+    { id:"kendaraan-bermotor", nama:"Asuransi Kendaraan Bermotor", kategori:"Produk Non Paket Koe", badge:"Kendaraan", tagline:"Perlindungan Kendaraan Roda 2 & 4 (Versi Umum)", deskripsi:"Asuransi yang menjamin kerugian atau kerusakan pada kendaraan bermotor berdasarkan Polis Standar Asuransi Kendaraan Bermotor Indonesia (PSAKBI).", manfaat:["Pilihan jaminan Comprehensive (All Risk) atau Total Loss Only (TLO)","Menjamin kecelakaan, pencurian, kebakaran, dan sambaran petir","Tanggung jawab hukum terhadap pihak ketiga","Tersedia perluasan banjir, gempa bumi, dan huru-hara"], premi:"Tarif sesuai ketentuan OJK NO.6/SEOJK.05/2017*", premi_note:"*bervariasi per wilayah, nilai kendaraan & tipe jaminan", pdf:"assets/brosur/kendaraan-bermotor.pdf", sppa:"Asuransi Kendaraan Bermotor" },
+    { id:"pengangkutan", nama:"Asuransi Pengangkutan Barang", kategori:"Produk Non Paket Koe", badge:"Logistik", tagline:"Perlindungan Kargo dari Gudang ke Tujuan", deskripsi:"Jaminan kerugian atas muatan/kargo berdasarkan Institute Cargo Clause (ICC), berlaku sejak barang meninggalkan gudang pengirim hingga tiba di tujuan.", manfaat:["3 pilihan jaminan: ICC A (terluas), ICC B, ICC C (dasar)","Menjamin kebakaran, ledakan, kapal kandas, dan tabrakan","ICC A juga menjamin gempa bumi, petir, dan air laut masuk","Menjamin General Average dan pembongkaran darurat"], premi:"Tarif bervariasi sesuai rute & nilai kargo*", premi_note:"*contoh: kargo Rp 500 juta rute internasional → premi Rp 1.905.000", pdf:"assets/brosur/pengangkutan.pdf", sppa:"Asuransi Pengangkutan Barang" },
+    { id:"kecelakaan-diri", nama:"Asuransi Kecelakaan Diri", kategori:"Produk Non Paket Koe", badge:"Kecelakaan Diri", tagline:"Perlindungan 24 Jam Akibat Kecelakaan", deskripsi:"Asuransi yang menjamin tertanggung akibat kecelakaan selama 24 jam dalam periode pertanggungan, tersedia untuk individu maupun kelompok.", manfaat:["Santunan meninggal dunia akibat kecelakaan","Santunan cacat tetap akibat kecelakaan","Biaya pengobatan/perawatan di rumah sakit","Berlaku 24 jam di seluruh dunia"], premi:"Mulai Rp 171.000/tahun*", premi_note:"*contoh Porter Pendaki Kelas IV, pertanggungan Rp 15 juta", pdf:"assets/brosur/kecelakaan-diri.pdf", sppa:"Asuransi Kecelakaan Diri" },
+    { id:"kesehatan", nama:"Asuransi Kesehatan", kategori:"Produk Non Paket Koe", badge:"Kesehatan", tagline:"Perlindungan Kesehatan Komprehensif (Korporasi)", deskripsi:"Asuransi kesehatan yang memberikan jaminan pertanggungan atas biaya perawatan kesehatan komprehensif untuk karyawan dan keluarga (group health insurance).", manfaat:["Rawat inap, rawat jalan, rawat gigi, dan manfaat persalinan","Pilihan kelas kamar VVIP hingga Kelas III","Bebas memilih RS di seluruh dunia","Manfaat tambahan dapat disesuaikan dengan kebutuhan"], premi:"Tarif sesuai kelas kamar & jumlah peserta*", premi_note:"*hubungi kami untuk penawaran kelompok", pdf:"assets/brosur/kesehatan.pdf", sppa:"Asuransi Kesehatan (Korporasi)" },
+    { id:"cash-in-safe", nama:"Asuransi Cash In Safe", kategori:"Produk Non Paket Koe", badge:"Uang & Aset", tagline:"Perlindungan Uang dalam Brankas", deskripsi:"Jaminan atas risiko hilangnya uang tunai, bank notes, cek, dan surat berharga selama berada di dalam brankas atau cashier box.", manfaat:["Perlindungan dari pencurian, perampokan, dan pembongkaran","Perlindungan dari perbuatan jahat pihak lain","Berlaku untuk uang tunai, cek, wesel, dan bilyet giro"], premi:"Tarif 0,375%/tahun dari nilai uang yang dijamin*", premi_note:"*contoh: uang Rp 500 juta → premi Rp 4.950.000/tahun", pdf:"assets/brosur/cash-in-safe.pdf", sppa:"Asuransi Cash In Safe" },
+    { id:"profesional-liability-dokter", nama:"Asuransi Profesional Liability Dokter", kategori:"Produk Non Paket Koe", badge:"Tanggung Gugat", tagline:"Perlindungan Hukum untuk Profesi Dokter", deskripsi:"Memberikan perlindungan terhadap tuntutan hukum atas kerugian yang timbul akibat menjalankan profesi dokter, termasuk bantuan advokasi dan medikolegal.", manfaat:["Advokasi medikolegal bagi dokter yang dituntut","Penyuluhan medikolegal oleh tim kompeten","Ganti rugi dapat dicairkan pada masa pra-peradilan","Menjamin tindakan medis asisten dokter di bawah pengawasan"], premi:"Dokter Umum mulai Rp 2.000.000/tahun*", premi_note:"*benefit Rp 500 juta; Dokter Spesialis mulai Rp 7.500.000/tahun", pdf:"assets/brosur/profesional-liability-dokter.pdf", sppa:"Asuransi Profesional Liability Dokter" },
+    { id:"tanggung-gugat-limbah-b3", nama:"Asuransi Tanggung Gugat Limbah B3", kategori:"Produk Non Paket Koe", badge:"Tanggung Gugat", tagline:"Perlindungan Hukum Pengelolaan Limbah", deskripsi:"Memberikan jaminan atas tuntutan pihak ketiga terhadap kerusakan harta benda dan cidera badan akibat kegiatan pengelolaan limbah B3 yang bersifat tiba-tiba.", manfaat:["Jaminan cidera badan pihak ketiga","Jaminan kerusakan harta benda pihak ketiga","Khusus untuk pelepasan bahan berbahaya tak terduga","Limit liability hingga Rp 5 miliar per kejadian"], premi:"Tarif 0,35% dari nilai pertanggungan*", premi_note:"*contoh: nilai Rp 5 miliar → premi Rp 17.530.000", pdf:"assets/brosur/tanggung-gugat-limbah-b3.pdf", sppa:"Asuransi Tanggung Gugat Limbah B3" },
+    { id:"customs-bond", nama:"Customs Bond", kategori:"Produk Non Paket Koe", badge:"Penjaminan", tagline:"Jaminan Fasilitas Penangguhan Bea Cukai", deskripsi:"Penjaminan kepada perusahaan importir/eksportir untuk melaksanakan kewajiban sesuai fasilitas penangguhan bea cukai dari Dirjen Bea dan Cukai.", manfaat:["Menjamin fasilitas OB23 (Ordonansi Bea pasal 23)","Menjamin Kawasan Berikat/EPTE","Menjamin Vooruitslag (izin pengeluaran lebih dahulu)","Menjamin PJK, PJT, SPTNP, dan PNBP"], premi:"Tarif bervariasi sesuai nilai & periode jaminan*", premi_note:"*contoh: Rp 1,045 miliar/3 bulan → service charge Rp 4.210.000", pdf:"assets/brosur/customs-bond.pdf", sppa:"Customs Bond" },
+    { id:"excise-bond", nama:"Excise Bond", kategori:"Produk Non Paket Koe", badge:"Penjaminan", tagline:"Jaminan Fasilitas Penangguhan Cukai", deskripsi:"Penjaminan kepada perusahaan importir/eksportir terkait fasilitas penangguhan pembebasan pungutan negara dari Direktorat Jenderal Bea dan Cukai.", manfaat:["Jaminan pembayaran cukai secara berkala","Jaminan penundaan pembayaran cukai","Jaminan pengangsuran tagihan utang/cukai/sanksi administrasi","Jaminan keberatan atas kekurangan cukai"], premi:"Tarif 1% dari nilai fasilitas*", premi_note:"*contoh: Rp 1,045 miliar/4 bulan → service charge Rp 10.115.000", pdf:"assets/brosur/excise-bond.pdf", sppa:"Excise Bond" },
+    { id:"surety-bond", nama:"Surety Bond Non Konstruksi", kategori:"Produk Non Paket Koe", badge:"Penjaminan", tagline:"Jaminan Kontrak & Tender Non Konstruksi", deskripsi:"Perjanjian tiga pihak antara Surety, Principal, dan Obligee — Surety menjamin bahwa jika Principal gagal memenuhi kewajiban kontraktual, Surety akan menyelesaikannya.", manfaat:["Jaminan Penawaran (Bid Bond) untuk keikutsertaan tender","Jaminan Pelaksanaan (Performance Bond)","Jaminan Uang Muka (Advance Payment Bond)","Jaminan Pemeliharaan (Maintenance Bond)"], premi:"Tarif 0,35% dari nilai bond*", premi_note:"*contoh: nilai bond Rp 1 miliar/3 bulan → service charge Rp 3.530.000", pdf:"assets/brosur/surety-bond.pdf", sppa:"Surety Bond Non Konstruksi" }
+  ];
+
+  const badgeClassMap = {
+    'Kendaraan':'badge-kendaraan','Properti':'badge-properti','Kesehatan':'badge-kesehatan',
+    'Kecelakaan Diri':'badge-kecelakaan','Kelompok':'badge-kelompok','Pendidikan':'badge-pendidikan',
+    'Logistik':'badge-logistik','Uang & Aset':'badge-uang','Tanggung Gugat':'badge-tggugat','Penjaminan':'badge-penjamin'
+  };
+  const getBadgeClass = (b) => badgeClassMap[b] || 'badge-penjamin';
+
+  function renderGrid(filter) {
+    const grid = document.getElementById('produk-grid');
+    const list = filter === 'semua' ? produkData : produkData.filter(p => p.kategori === filter);
+    if (!list.length) { grid.innerHTML = '<p class="col-span-full text-center py-16 text-gray-400">Tidak ada produk dalam kategori ini.</p>'; return; }
+    grid.innerHTML = list.map(p => `
+      <article class="card produk-grid-card overflow-hidden flex flex-col rounded-2xl border" style="background-color:var(--bg-card);border-color:var(--border-color);" data-id="${p.id}" tabindex="0" role="button" aria-label="Lihat detail ${p.nama}">
+        <div class="px-5 pt-6 pb-2 flex items-start justify-between gap-2">
+          <span class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${getBadgeClass(p.badge)}">${p.badge}</span>
+          <span class="text-xs font-medium px-2 py-1 rounded-full" style="background:var(--bg-secondary);color:var(--text-secondary);">${p.kategori}</span>
+        </div>
+        <div class="px-5 pb-6 flex flex-col flex-1">
+          <h3 class="font-bold text-lg mb-1 mt-2" style="color:var(--text-primary);">${p.nama}</h3>
+          <p class="text-sm mb-4" style="color:var(--bumida-orange);">${p.tagline}</p>
+          <p class="text-xs leading-relaxed mb-5 flex-1" style="color:var(--text-secondary);">${p.deskripsi.length > 100 ? p.deskripsi.slice(0,100)+'…' : p.deskripsi}</p>
+          <button class="btn-outline text-sm w-full justify-center text-center mt-auto" style="padding:10px 12px;" data-id="${p.id}" aria-label="Lihat detail ${p.nama}">Lihat Detail</button>
+        </div>
+      </article>
+    `).join('');
+    grid.querySelectorAll('[data-id]').forEach(el => {
+      el.addEventListener('click', () => showDetail(el.dataset.id));
+      el.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); showDetail(el.dataset.id); } });
+    });
+  }
+
+  function showDetail(id) {
+    const p = produkData.find(x => x.id === id);
+    if (!p) return;
+    const badge = document.getElementById('detail-badge');
+    badge.textContent = p.badge;
+    badge.className = `inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 ${getBadgeClass(p.badge)}`;
+    document.getElementById('detail-nama').textContent      = p.nama;
+    document.getElementById('detail-tagline').textContent   = p.tagline;
+    document.getElementById('detail-deskripsi').textContent = p.deskripsi;
+    document.getElementById('detail-premi').textContent     = p.premi;
+    document.getElementById('detail-premi-note').textContent = p.premi_note;
+    document.getElementById('detail-manfaat').innerHTML = p.manfaat.map(m =>
+      `<li class="flex items-start gap-3"><span class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background:linear-gradient(135deg,#FEE2E2,var(--bumida-orange-pale));color:var(--bumida-red);">✓</span><span class="text-sm leading-relaxed" style="color:var(--text-secondary);">${m}</span></li>`
+    ).join('');
+    document.getElementById('detail-btn-sppa').href = 'e-sppa.html';
+    document.getElementById('detail-btn-pdf').href = p.pdf;
+    document.getElementById('produk-grid').classList.add('hidden');
+    document.getElementById('filter-tabs').classList.add('hidden');
+    const detailEl = document.getElementById('produk-detail');
+    detailEl.classList.remove('hidden');
+    history.pushState({ produkId: id }, '', `produk.html#${id}`);
+    const navbar = document.getElementById('navbar');
+    const offset = navbar ? navbar.offsetHeight + 16 : 80;
+    window.scrollTo({ top: detailEl.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+  }
+
+  function showGrid() {
+    document.getElementById('produk-detail').classList.add('hidden');
+    document.getElementById('produk-grid').classList.remove('hidden');
+    document.getElementById('filter-tabs').classList.remove('hidden');
+    history.pushState({}, '', 'produk.html');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.getElementById('filter-tabs').addEventListener('click', e => {
+    const tab = e.target.closest('.filter-tab');
+    if (!tab) return;
+    document.querySelectorAll('.filter-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+    renderGrid(tab.dataset.filter);
+    document.getElementById('produk-detail').classList.add('hidden');
+    document.getElementById('produk-grid').classList.remove('hidden');
+    history.pushState({}, '', 'produk.html');
+  });
+
+  document.getElementById('btn-kembali').addEventListener('click', showGrid);
+
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.slice(1);
+    if (hash && produkData.find(p => p.id === hash)) showDetail(hash);
+    else showGrid();
+  });
+
+  // Init
+  renderGrid('semua');
+  const initHash = window.location.hash.slice(1);
+  if (initHash && produkData.find(p => p.id === initHash)) {
+    setTimeout(() => showDetail(initHash), 100);
+  }
+  </script>
 
 </body>
 </html>
